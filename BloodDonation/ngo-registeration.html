@@ -1,0 +1,348 @@
+<html>
+    
+    <head>
+      
+      <meta charset="UTF-8">
+    <!-- Required meta tags -->
+
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <title>N.G.O Registeration</title>
+        
+        
+         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="bootstrap/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    
+
+        <style>
+        
+        #head
+        {
+            margin-top: 100px;
+            text-shadow: 3px 3px 3px gray;
+            font-size: 60px;
+           font-family: Calibri;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    
+        .mrg
+        {
+            margin-top: 50px;
+            font-family: calibri;
+            font-weight: bold;
+        }
+            
+               input[type="text"]
+        {
+          box-shadow: 3px 3px 3px black;
+        }
+        
+         button
+        {
+          box-shadow: 3px 3px 3px black;
+        }
+         
+              .bg
+        {
+            
+               left: 0;
+               top: 0;
+          
+           width: auto;
+            background-size: cover;
+        background-repeat: no-repeat;
+            background-image: url(pics/ngobg2.jpg);
+        }
+    
+            
+              .trans
+        {
+             background: rgba(120,110,110,.4);
+            
+        }
+    
+    
+    
+    </style>
+        
+        <script type="application/javascript">
+        
+        $(document).ready(function(){
+            
+              /*Save */
+               $("#save").click(function(){
+                   
+        
+                   
+                
+                    $queryString=$("#frm").serialize();
+                    $url="ngo-registeration-save-ajax.php?"+$queryString;
+                    
+                    $.get($url,function(response){
+                        
+                        alert(response);
+                      
+                        
+                       
+                    });
+                     
+              
+                   
+                   
+               }); 
+            
+               
+            //  update
+             $("#update").click(function(){
+                   
+        
+                   
+                
+                    $queryString=$("#frm").serialize();
+                    $url="ngo-registeration-update-ajax.php?"+$queryString;
+                    
+                    $.get($url,function(response){
+                        
+                        alert(response);
+                      
+                        
+                       
+                    });    
+            
+            });
+            
+            
+            
+                //fetch
+                 
+                 $("#search").click(function(){
+                     
+                     
+               $regnofetch = $("#regnofetch").val();
+                
+                $.getJSON("fetch-ngo-registeration.php?regnofetch="+$regnofetch,function(jasonArray){
+                    
+                    
+                    $("#regno").val(jasonArray[0].regno);
+                    $("#ngoname").val(jasonArray[0].ngoname);
+                    $("#address").val(jasonArray[0].address);
+                    $("#city").val(jasonArray[0].city);
+                    $("#contact").val(jasonArray[0].contact);
+                    $("#email").val(jasonArray[0].email);
+                    $("#president").val(jasonArray[0].president);
+                    $("#pmobile").val(jasonArray[0].pmobile);
+                    $("#yoe").val(jasonArray[0].yoe);
+                    $("#members").val(jasonArray[0].members);
+                    $("#info").val(jasonArray[0].info);  
+                    
+                });
+                   
+         });      
+        //==================================================
+            
+        
+        });
+            
+        
+        
+        
+        </script>
+        
+    </head>
+    
+    
+    
+    <body class="bg">
+      <container>
+       
+       <form id="frm" name="frm">
+       
+    <div class="row">
+       <div class="col-md-12">
+           
+           <nav class="navbar fixed-top navbar-expand-lg navbar-dark " style="background-color:#801a00;">
+ <a class="navbar-brand " href="#">
+    <img src="pics/donateblood.png" width="50" height="50" class="d-inline-block align-items-center" alt="">
+    Blood Donation
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item active">
+        <a class="nav-link text-white " href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+       <li class="nav-item active">
+        <a class="nav-link text-white" href="donor-profile.php">Donar<span class="sr-only">(current)</span></a>
+      </li>
+      
+       <li class="nav-item active">
+        <a class="nav-link text-white" href="ngo-registeration.html">N.G.O<span class="sr-only">(current)</span></a>
+      </li>
+      
+        <li class="nav-item active">
+        <a class="nav-link text-white" href="needy-profile.php">Needy<span class="sr-only">(current)</span></a>
+      </li>
+      
+      
+       
+      </ul>
+    
+      <input class="form-control col-2 mr-sm-2" type="search" name="regnofetch" id="regnofetch" placeholder="reg. no " aria-label="Search">
+      <button class="btn btn-outline-light my-2 my-sm-0 " type="button" name="btn" id="search" value="search" >Search</button>
+    
+  </div>
+</nav>   
+       </div>      
+    </div>
+       
+         <center class="trans" >
+<!--      heading   -->
+        
+         <div id="head">N.G.O Resgisteration</div>
+         
+               <!--       registeration number-->
+              
+   <div class="form-group row mrg">
+    <label for="regno" class="col-2 offset-3 col-form-label">Registeration Number :</label>
+    <div class="col-3">
+      <input type="text" class="form-control" id="regno" name="regno" placeholder="reg. number">
+    </div>
+  </div>
+        
+       
+        
+        <!--       ngo name-->
+   <div class="form-group row " style="font-weight: bold;  font-family: calibri;">
+    <label for="ngoname" class="col-2 offset-3 col-form-label">N.G.O Name :</label>
+    <div class="col-3">
+      <input type="text" class="form-control" id="ngoname" name="ngoname" placeholder="N.G.O name">
+    </div>
+  </div>
+       
+       
+    
+          <hr class="col-6" style="height:1px; background-color:#801a00;">
+          
+        
+       <!--      address-->
+    <div class="form-group row mrg">
+    <label for="address" class="col-2 offset-3 col-form-label">Address :</label>
+    <div class="col-2">
+       <textarea rows="3" cols="40" id="address" name="address" placeholder=".....address...."></textarea>
+       
+        </div>
+  </div> 
+        
+          
+          
+           <div class="form-row" style="font-weight: bold;   font-family: calibri;">
+           
+<!--   city-->
+            <div class="col-1 offset-1">
+           <label for="city" class="col-form-label">City :</label>
+    </div>
+     <div class="col-3 ">
+         <input type="text" class="form-control" id="city" name="city" placeholder="city ">
+    </div>
+    
+    
+<!-- contact-->
+     <div class="col-2">
+           <label for="contact" class="col-form-label">Contact :</label>
+    </div>
+     <div class="col-3 ">
+         <input type="text" class="form-control" id="contact" name="contact" placeholder="contact ">
+    </div>
+    
+    
+             </div>
+             
+             
+                 <!--       email-->
+   <div class="form-group row mrg " >
+    <label for="email" class="col-2 offset-2 col-form-label">Email :</label>
+    <div class="col-4">
+      <input type="text" class="form-control" id="email" name="email" placeholder="email">
+    </div>
+  </div>
+        
+           <br> <hr class="col-10" style="height:1px; background-color:#801a00;"><br>
+          
+            
+           <div class="form-row" style="font-weight: bold;   font-family: calibri;">
+           
+
+           <!--  president-->
+            <div class="col-2 offset-2">
+           <label for="president" class="col-form-label">President Name :</label>
+    </div>
+     <div class="col-2 ">
+         <input type="text" class="form-control" id="president" name="president" placeholder="president name ">
+    </div>
+  
+      
+<!-- Mobile number-->
+     <div class="col-2">
+           <label for="pmobile" class="col-form-label">Mobile Number :</label>
+    </div>
+     <div class="col-2 ">
+         <input type="text" class="form-control" id="pmobile" name="pmobile" placeholder="mobile number ">
+    </div>
+    
+             </div>
+          
+          
+                    <!--       established in year-->
+              
+   <div class="form-group row mrg">
+    <label for="yoe" class="col-2 offset-4 col-form-label">Year of Establishment:</label>
+    <div class="col-2">
+      <input type="text" class="form-control" id="yoe" name="yoe" placeholder="year">
+    </div>
+  </div>
+        
+       
+        
+        <!--     number of  members-->
+   <div class="form-group row " style="font-weight: bold;  font-family: calibri;">
+    <label for="members" class="col-2 offset-4  col-form-label">Number of Members :</label>
+    <div class="col-2">
+      <input type="text" class="form-control" id="members" name="members"  >
+    </div>
+  </div>
+      
+           
+       <!--      info-->
+    <div class="form-group row mrg">
+    <label for="info" class="col-2 offset-3 col-form-label">Other Info :</label>
+    <div class="col-2">
+       <textarea rows="3" cols="40" id="info" name="info" placeholder=".....Other information...."></textarea>
+       
+        </div>
+  </div> 
+        
+          
+        <br><hr class="col-6" style="height:1px; background-color:#801a00;"><br>
+           
+                        <button type="button" class="btn btn-primary" name="save" id="save" value="save">Save</button>
+                        <button type="button" class="btn btn-dark" name="update" id="update" value="update">Update</button>
+                       
+
+  
+
+            <br><br><hr class="col-6" style="height:1px; background-color:#801a00;"><br>
+       
+          
+           </center>
+       </form>
+        </container>
+    </body>
+ 
+    
+</html>
